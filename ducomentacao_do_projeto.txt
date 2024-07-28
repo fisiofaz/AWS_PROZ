@@ -1,0 +1,84 @@
+# Documentação do Projeto
+
+## 1. Diagrama de Banco de Dados
+
+    O diagrama de banco de dados para o sistema de cadastro e login incluirá as tabelas necessárias para armazenar as informações dos usuários e quaisquer outras informações relevantes para o funcionamento do sistema.
+
+    ### Tabelas principais:
+
+        Users:
+
+            'id' (Primary Key, INT, Auto Increment)
+            'username' (VARCHAR, Unique)
+            'email' (VARCHAR, Unique)
+            'password' (VARCHAR, hashed)
+            'created_at' (TIMESTAMP)
+            'updated_at' (TIMESTAMP)
+    
+        Sessions (opcional, para gerenciar sessões de login):
+            'session_id' (Primary Key, VARCHAR)
+            'user_id' (Foreign Key, INT)
+            'created_at' (TIMESTAMP)
+            'expires_at' (TIMESTAMP)
+
+## 2. Diagrama de Classes
+
+    O diagrama de classes descreverá as classes principais do sistema de cadastro e login, incluindo seus atributos, métodos e relacionamentos.
+
+    ### Classes principais:
+
+        User:
+
+            Atributos: 'id', 'username', 'email', 'password', 'created_at', 'updated_at'
+            Métodos: 'register()', 'login()', 'logout()', 'hashPassword()', 'verifyPassword()'
+
+        Session (opcional):
+
+            Atributos: 'session_id', 'user_id', 'created_at', 'expires_at'
+            Métodos: 'createSession()', 'destroySession()'
+
+## 3. Manual do Usuário
+    O manual do usuário descreverá as etapas necessárias para cadastrar um novo usuário e realizar o login no sistema.
+
+    ### Etapas para Cadastro de Usuário:
+
+        Acessar a página de cadastro.
+        Preencher os campos obrigatórios: nome de usuário, e-mail e senha.
+        Clicar no botão "Cadastrar".
+        O sistema validará as informações e criará uma nova conta se os dados forem válidos.
+
+    ### Etapas para Login:
+
+        Acessar a página de login.
+        Inserir nome de usuário ou e-mail e senha.
+        Clicar no botão "Login".
+        O sistema verificará as credenciais e permitirá o acesso se forem válidas.
+
+# Implementação do Sistema
+
+1. Código-fonte do Sistema de Cadastro e Login
+
+    Backend (Node.js/Express.js): app.js:
+    Frontend (HTML/CSS/JavaScript): index.html; script.js; styles.css.
+
+# Demonstração do Sistema
+
+    ## Apresentação do Sistema de Cadastro e Login:
+
+        Cadastro de Usuários: Demonstração de um novo usuário preenchendo o formulário de cadastro e registrando-se no sistema.
+        Login de Usuários: Demonstração de um usuário existente fazendo login no sistema.
+        Validação: Mostrar a validação de entradas e feedback ao usuário em caso de erros (ex., e-mail já registrado).
+    
+    ## Explicação do Código-fonte:
+
+        O backend em Node.js utiliza Express.js para configurar rotas de API para registrar e autenticar usuários.
+        O uso de bcrypt para criptografia de senhas garante que as senhas dos usuários sejam armazenadas de forma segura.
+        O frontend em HTML e JavaScript permite a interação do usuário com o sistema de cadastro e login.
+        As solicitações de API do frontend para o backend são feitas usando fetch, com a manipulação de respostas para fornecer feedback ao usuário.
+
+# Recomendações de Segurança
+
+    Criptografia de Senhas: Utilizar sempre bibliotecas de hashing seguras como bcrypt para proteger senhas.
+    Validação de Entrada: Implementar validações de entrada tanto no frontend quanto no backend para evitar injeções de código e outros ataques.
+    HTTPS: Assegurar que toda a comunicação entre o cliente e o servidor seja feita através de HTTPS para proteger dados em trânsito.
+    Sessões Seguras: Se utilizar sessões, garantir que os cookies de sessão sejam seguros e tenham uma política de expiração adequada.
